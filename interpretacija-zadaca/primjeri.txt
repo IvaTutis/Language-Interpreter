@@ -1,0 +1,64 @@
+1.PRIMJER
+/*komentar: ispisuje hello world na ekran 
+cout << "Hello World" << endl;
+
+2.PRIMJER
+/*komentar: isprintaj prvih 100 brojeva, osim 30
+   for (i=0; i<100; i+=3){
+        /* ako je i razlicit od 30, ispisi ga
+        if(i!=30)cout << i << " ";
+   }
+   cout << endl;
+
+
+3.PRIMJER
+/*komentar: crta mrezu tockica 10x10
+/*crta redove
+   for (i=0; i<10; i++){
+    /*crta stupce
+        for(j=0; j<10; j++){
+        /*printa tockice
+            cout << ". " ;
+        }
+        cout << endl;
+   }
+   cout << endl;
+
+4.PRIMJER
+/*komentar: zadatak s operacijama nad stringovima
+/*provjeravam da li se Jakov i Luccija isto zovu koristeci naredbu susporedi, koja vraca broj 0 ako brojevi nisu jednaki
+    pridruzi(j, "Jakov")
+    pridruzi(l, "Lucija")
+    pridruzi(a, susporedi("Jakov" == "Lucija"))
+    if (a==0) cout<<"Imena mojih prijatelja " << j<< " i "<< l <<" nisu ista"<<endl;
+    /*Konkatenacijom pridruzujem lucijinom imenu njeno prezime
+    pridruzi(lv, konk("Lucija", " Valentić"))
+    cout<<"Puno ime moje kolegice, zvane " << l <<" je " << lv <<endl;
+    /*pridruzujem imenu lucijine ulice broj njene adrese, pretvoren u string
+    pridruzi(broj, ustring(2))
+    pridruzi(adresa, "Tomašićeva")
+    cout<<lv << " zivi na adresi "<< adresa <<" " <<broj;
+
+
+5.PRIMJER
+/*komentar: crta kvadrat upisanih 10 znakova, po 10 u svakom redu, gdje samo prvi smije biti 0. Ako je drugdje dana 0, ispisuje prethodni znak.
+/*ucitava broj prvi put
+/*crta prvi red
+cin >> n;
+ for(j=0; j<9; j++){
+            cout << n << " " ;
+        }
+cout << endl;
+
+/*crta drugih 9 redaka
+for (i=0; i<10; i++){
+    /*ucitava novi broj
+    cin >> novi;
+    if (novi!= 0)pridruzi(n, novi)
+    /*ispisuje novi redak
+        for(j=0; j<9; j++){
+            cout << n << " " ;
+        }
+        cout << endl;
+   }
+   cout << endl;

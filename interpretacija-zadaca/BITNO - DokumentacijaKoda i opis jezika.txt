@@ -1,0 +1,149 @@
+U ovom fileu će biti objašnjen jezik kojeg smo smislili, i gramatika. Ovdje i tamo će biti napisana gramatika, i 
+5 primjera koje smo smislili koje koriste naš jezik. Primjeri će biti napisani unutar
+stringova naziva 'ulaz\d', i jedino se onda unutar maina treba promjeniti koji
+ulaz se tokenizira/parsira/izvršava. Prvo će se izvršiti prvi najednostavniji primjer.
+
+Uveli smo jedan brojevni tip, to je tip int. Ni jedan drugi tip nije podržan,
+i ako se proba unjeti, doći će do greške.
+
+Uveli smo jedan stringovi tip, i jedini string koji je podržan je untar dvostrukih 
+navodnika. String između jednostrukih navodnika nije podržan.
+
+Komentari su jednolinijski, i znak koji označava da komentar započinje jest /*
+/*Ovo je komentar
+Ovo više nije komentar
+
+Operacije koje imamo sa stringovima su sljedeće:
+	susporedi(string operator string) - ova operacija uspoređuje dva stringa i vraća
+					broj kao rezultat; samo se dva string mogu uspoređivati
+					ovdje nije podržano uspoređivanje varijable
+					i stringa, ili dvije varijable;
+					operatori kojima se uspoređuju dva stringa su
+					==, !=, <, >, >=, <= i znače isto što i u c++
+	konkateniraj(string, string) - operacija konkatenira dva string i vraća novi
+					konkateniran stirng; isto tako, nije podržano
+					konkateniranje varijabli i stringa ili samo
+					varijabli
+	ubroj(string/varijabla) - ova operacija prima jedan string ili neku varijablu
+					(token je ime) i pretvara to u broj, naravno ovdje
+					se misli na sadržaj te varijable. Ako 
+					ne uspije pretovoriti to u broj, vraća
+					semantičku grešku; ostali tipovi unutar operacije
+					nisu podržani
+					
+Operacije koje imamo sa brojevima su sljedeće:
+	busporedi(broj operator broj) - ova operacija uspoređuje dva broja i vraća
+					broj kao rezultat; samo se dva broja mogu uspoređivati
+					ovdje nije podržano uspoređivati varijable i broj,
+					ili dvije varijable u kojima su brojevi
+					operatori kojima se uspoređuju dva stringa su
+					==, !=, <, >, >=, <= i znače isto što i u c++
+	ustring(broj) - ova operacija pretvara dani string ili varijablu (token je ime)
+			u string, naravno ovdje se misli na sadržaj te varijable
+Upis je podržan i upisuje se na način da se može upisati samo u jednu varijablu.
+Izgleda ovako:
+cin>>a;
+Ovo bi rezultiralo greškom:
+cin>>a>>b;
+Isto tako, ako se upise broj, ta varijabla će sadržavati broj kao sadržaj. Ako se 
+upiše nešto što nije cijeli broj, ili se ne može konvertirati u broj, to postaje string
+i ta varijabla onda sadržava string
+
+Ispis je podržan i može se ispisivati string, broj, varijabla, i može se ispisivati
+koliko god puta korisnik to želi.
+Dakle:
+cout<<a<<"Lucija"<<3<<b<<endl;
+gdje je a varijabla u kojoj je string, a b varijabla u kojoj je neki broj.
+Isto tako, dodali smo i endl koji se moze staviti na kraj cout-a i to će značiti da
+treba ispisati i novi red.
+
+Jezik podržava naredbe if, if else, i for. Ove operacije funkcioniraju kao u c++, jedina
+razlika je što u grananju if, unutar zagrada je jedino podržano uspoređivanje varijable
+i broja. Dakle ovo je točno:
+if(a != 4), gdje je a neka varijabla u kojoj se nalazi broj,
+a ovo nije točno, to jest, nije podržano:
+if(3 == 5)
+Isto tako, if se može pisati sa vitičastim ili bez njih. Jedino ako se piše bez vitičastih,
+nakon if NE SMIJE slijediti else. Ako se if piše sa vitičastim, onda else smije slijediti
+i else može, a ne mora imati vitičaste zagrade. For petlja može, a ne mora imati vitičaste
+zagrade
+ 
+Nismo dodali mogućnost prekida neke naredbe, dakle nekakve naredbe slične break-u
+
+Dodali smo mogućnost zbrajanja, oduzimanja, množenja i djeljenja, s tim da su te
+sve operacije cijelobrojne, dakle 3/2 = 1. Isto tako, omogućili smo množenje
+nekog broja sa zagradom, tj. 2 * (2+4-5), i djeljenje 2 / (2+4-5). Kako bi u svom programu
+mogli računati, operacija/naredba za to jest izracun(neki izraz kojeg želimo izračunati).
+Rezultat ove operacije jest rezultat tog izraza. Ono što se može zbrajati jesu brojevi 
+ili varijable, koje u sebi sadrže brojeve. Ako se nešto drugo pokuša zbrojiti,
+vrati se greška
+
+Dodali smo mogućnost pridruživanja vrijednosti varijabli. Sve što se može pridružiti varijabli jest
+broj, string, druga varijabla, naredba konkateniraj, naredba izračunaj, naredba busporedi, 
+naredba susporedi, ubroj, ustring
+
+Dodali smo i dodatnu naredbu help, koja jednostavno kad se napiše u programu 
+ispisuje kratku uputu za jezik. Nakon nje se mogu pisati ostale naredbe, petlje, bilo što.
+Ili prije nje naravno. (Da bi ta naredba funckionirala, u datoteci sa ovim kodom MORA biti
+tekstualna datoteka naziva 'pomocSJezikom.txt' u kojoj je napisana uputa za jezik)
+
+Nakon naredbi ne ide točka zarez, već točka zarez ide samo iza cout, ili cin kao što je u
+opisu. Dakle 
+pridruzi(a, 4);
+će rezultirati greškom, dok
+cout<<4<<endl; nećes
+_________
+
+GRAMATIKA
+_________
+	
+start -> naredba naredbe
+
+naredbe -> " " | naredba naredbe
+
+naredba -> KOMENTAR | petlja | ispis TZAREZ | grananje | upis |
+            izracun | busporedi | susporedi | ubroj | konk |
+            pridruzi | HELP | ustring
+
+else -> ELSE OTV ZATV naredba | ELSE OTV ZATV VOTV naredbe VZATV
+
+petlja -> for naredba | for VOTV naredbe VZATV
+
+ispis -> COUT varijable | COUT varijable MMANJE ENDL TZAREZ
+
+varijable -> " " | MMANJE IME varijable
+
+grananje -> if naredba | if VOTV naredbe VZATV | if VOTV naredbe VZATV else
+
+if -> IF OTV IME operator_usporedbe BROJ ZATV
+
+upis -> CIN VVECE IME
+
+izracun -> IZRACUN OTV izraz ZATV
+
+busporedi -> BUSPOREDI OTV BROJ operator_usporedbe BROJ ZATV
+
+susporedi -> SUSPOREDI OTV STRING operator_usporedbe STRING ZATV
+
+ubroj -> UBROJ OTV STRING ZATV | UBROJ OTV IME ZATV
+
+ustring -> USTRING OTV BROJ ZATV | USTRING OTV IME ZATV
+
+konk -> KONK OTV STRING ZAREZ STRING ZATV
+
+for -> FOR OTV IME JEDNAKO BROJ TZAREZ IME MANJE BROJ TZAREZ IME
+        inkrement ZATV
+
+operator_usporedbe -> MANJE | JMANJE | VECE | JVECE | JJEDNAKO | RAZLICITO
+
+inkrement -> PPLUS | JPLUS BROJ
+
+izraz -> clan | izraz PLUS clan | izraz MINUS clan
+
+clan -> faktor | clan PUTA faktor | clan KROZ faktor | MINUS clan | clan faktor
+
+faktor -> BROJ | OTV izraz ZATV
+
+pridruzi -> PRIDRUZI OTV IME ZAREZ drugaPridruzi ZATV
+
+drugaPridruzi ->  STRING | BROJ | izracun | busporedi | susporedi | ubroj | konk | IME

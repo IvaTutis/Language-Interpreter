@@ -1,0 +1,21 @@
+zbrajanje dva broja -> izracun(5 + 3)
+
+pridruzivanje stringa varijabli -> pridruzi(a, "Iva")
+
+pridruzivanje broja varijabli -> pridruzi (a, "Dario")
+
+pretvaranje stringa u broj -> ubroj("4")
+
+pretvaranje broja u string -> ustring(342)
+
+usporedivanje dva stringa -> susporedi("Lucija" < "Jakov")
+
+uspredi dva broja -> busporedi(3 == 5)
+
+konkateniraj dva string -> konk("Lucija", "Iva")
+
+pomoc s jezikom -> help
+
+unos -> cin>>a;
+
+ispis -> cout<<"Lucija"<<endl;
